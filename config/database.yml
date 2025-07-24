@@ -37,28 +37,14 @@ production:
 
   queue:
     <<: *default
-    # database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
+    database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
     migrations_paths: db/queue_migrate
+
   cable:
     <<: *default
-    # database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
+    database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate
 
   primary:
     <<: *default
-    # database: path/to/persistent/storage/production.sqlite3
     database: <%= ENV['DATABASE_PATH'] %>
-
-  cache:
-    <<: *default
-    database: /home/deploy/active-prompt-demo/shared/storage/production_cache.sqlite3
-    migrations_paths: db/cache_migrate
-
-  queue:
-    <<: *default
-    # database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *default
-    # database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
-    migrations_paths: db/cable_migrate
