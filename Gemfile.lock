@@ -1,8 +1,9 @@
 GIT
   remote: https://github.com/aviflombaum/active_prompt.git
-  revision: 8647bb6e685c4e56c34a9a4e21347fd2361c7c97
+  revision: 5100a72c04fdb8f0a33a3540308fa817d903f48e
   specs:
     active_prompt (0.1.0)
+      bcrypt
       rails (>= 8.0.2)
       ruby_llm (~> 1.3)
 
@@ -114,6 +115,7 @@ GEM
       railties
     ast (2.4.3)
     base64 (0.3.0)
+    bcrypt (3.1.20)
     benchmark (0.4.1)
     bigdecimal (3.2.2)
     bindex (0.8.1)

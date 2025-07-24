@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_07_23_203838) do
+ActiveRecord::Schema[8.1].define(version: 2025_07_24_165118) do
   create_table "active_prompt_parameters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "default_value"
@@ -26,6 +26,25 @@ ActiveRecord::Schema[8.1].define(version: 2025_07_23_203838) do
     t.index ["position"], name: "index_active_prompt_parameters_on_position"
     t.index ["prompt_id", "name"], name: "index_active_prompt_parameters_on_prompt_id_and_name", unique: true
     t.index ["prompt_id"], name: "index_active_prompt_parameters_on_prompt_id"
+  end
+
+  create_table "active_prompt_playground_run_results", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.float "execution_time", null: false
+    t.integer "max_tokens"
+    t.string "model", null: false
+    t.text "parameters"
+    t.integer "prompt_version_id", null: false
+    t.string "provider", null: false
+    t.text "rendered_prompt", null: false
+    t.text "response", null: false
+    t.text "system_message"
+    t.float "temperature"
+    t.integer "token_count"
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_active_prompt_playground_run_results_on_created_at"
+    t.index ["prompt_version_id"], name: "index_active_prompt_playground_run_results_on_prompt_version_id"
+    t.index ["provider"], name: "index_active_prompt_playground_run_results_on_provider"
   end
 
   create_table "active_prompt_prompt_versions", force: :cascade do |t|
@@ -61,6 +80,15 @@ ActiveRecord::Schema[8.1].define(version: 2025_07_23_203838) do
     t.integer "versions_count", default: 0, null: false
   end
 
+  create_table "active_prompt_settings", force: :cascade do |t|
+    t.text "anthropic_api_key"
+    t.datetime "created_at", null: false
+    t.text "openai_api_key"
+    t.json "preferences", default: {}
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_prompt_parameters", "active_prompt_prompts", column: "prompt_id"
+  add_foreign_key "active_prompt_playground_run_results", "active_prompt_prompt_versions", column: "prompt_version_id"
   add_foreign_key "active_prompt_prompt_versions", "active_prompt_prompts", column: "prompt_id"
 end
