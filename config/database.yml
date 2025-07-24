@@ -8,6 +8,7 @@ default: &default
   adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  database: <%= ENV['DATABASE_PATH'] %>
 
 development:
   <<: *default
@@ -27,6 +28,8 @@ test:
 # Similarly, if you deploy your application as a Docker container, you must
 # ensure the database is located in a persisted volume.
 production:
+  database: <%= ENV['DATABASE_PATH'] %>
+
   primary:
     <<: *default
     # database: path/to/persistent/storage/production.sqlite3
