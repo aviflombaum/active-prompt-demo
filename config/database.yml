@@ -27,25 +27,36 @@ test:
 #
 # Similarly, if you deploy your application as a Docker container, you must
 # ensure the database is located in a persisted volume.
+cache:
+  <<: *default
+  database: /home/deploy/active-prompt-demo/shared/storage/production_cache.sqlite3
+  migrations_paths: db/cache_migrate
+
+queue:
+  <<: *default
+  database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
+  migrations_paths: db/queue_migrate
+
+cable:
+  <<: *default
+  database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
+  migrations_paths: db/cable_migrate
+
 production:
   <<: *default
   database: <%= ENV['DATABASE_PATH'] %>
-
   cache:
     <<: *default
     database: /home/deploy/active-prompt-demo/shared/storage/production_cache.sqlite3
     migrations_paths: db/cache_migrate
-
   queue:
     <<: *default
     database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
     migrations_paths: db/queue_migrate
-
   cable:
     <<: *default
     database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
     migrations_paths: db/cable_migrate
-
   primary:
     <<: *default
     database: <%= ENV['DATABASE_PATH'] %>
@@ -57,7 +68,6 @@ production:
       <<: *default
       database: /home/deploy/active-prompt-demo/shared/storage/production_queue.sqlite3
       migrations_paths: db/queue_migrate
-
     cable:
       <<: *default
       database: /home/deploy/active-prompt-demo/shared/storage/production_cable.sqlite3
