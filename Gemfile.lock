@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/aviflombaum/active_prompt.git
-  revision: 5100a72c04fdb8f0a33a3540308fa817d903f48e
+  revision: d0d280fdaf211a5a2f71d2f5d107531fc1db3af5
   specs:
     active_prompt (0.1.0)
       bcrypt
