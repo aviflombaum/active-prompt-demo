@@ -20,6 +20,10 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
+production:
+  <<: *default
+  database: <%= ENV['DATABASE_PATH'] %>
+  
 # SQLite3 write its data on the local filesystem, as such it requires
 # persistent disks. If you are deploying to a managed service, you should
 # make sure it provides disk persistence, as many don't.
