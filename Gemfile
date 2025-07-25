@@ -57,4 +57,4 @@ group :development do
 end
 
 # AI-powered prompt management for Rails [https://github.com/aviflombaum/active_prompt]
-gem "active_prompt", git: "https://github.com/aviflombaum/active_prompt.git"
+gem "prompt_engine", git: "https://github.com/aviflombaum/prompt_engine.git"
