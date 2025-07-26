@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_07_24_165118) do
+ActiveRecord::Schema[8.1].define(version: 2025_07_25_201112) do
   create_table "prompt_engine_eval_results", force: :cascade do |t|
     t.text "actual_output"
     t.datetime "created_at", null: false
@@ -121,11 +121,13 @@ ActiveRecord::Schema[8.1].define(version: 2025_07_24_165118) do
     t.json "metadata"
     t.string "model"
     t.string "name"
+    t.string "slug"
     t.string "status"
     t.text "system_message"
     t.float "temperature"
     t.datetime "updated_at", null: false
     t.integer "versions_count", default: 0, null: false
+    t.index ["slug"], name: "index_prompt_engine_prompts_on_slug", unique: true
   end
 
   create_table "prompt_engine_settings", force: :cascade do |t|
