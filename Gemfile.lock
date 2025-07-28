@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/aviflombaum/prompt_engine.git
-  revision: da5acab695e7069dfaa86f605e2d8b9aa94aa5b6
+  revision: 280e28ed92ac6e4beda237e028448aecbbdb1abd
   specs:
     prompt_engine (1.0.0)
       bcrypt
@@ -172,7 +172,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    json (2.13.1)
+    json (2.13.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     logger (1.7.0)
